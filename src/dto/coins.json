@@ -1,0 +1,18 @@
+[
+    {
+        "denomination":0.05,
+        "noCoinAvailable": 25
+    },
+    {
+        "denomination": 0.10,
+        "noCoinAvailable": 30
+    },
+    {
+        "denomination": 0.25,
+        "noCoinAvailable": 27
+    },
+    {
+        "denomination": 0.50,
+        "noCoinAvailable": 15
+    }
+]

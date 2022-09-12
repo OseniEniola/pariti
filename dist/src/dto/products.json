@@ -1,0 +1,31 @@
+[
+    {
+        "itemName": "Chocolate",
+        "quantity": 20,
+        "price": 1.10,
+        "description": "Chocolate bar"
+    },
+    {
+        "itemName": "Apple juice",
+        "quantity": 30,
+        "price": 20.90,
+        "description": "Apple juice"
+    }, {
+        "itemName": "Cake",
+        "quantity": 5,
+        "price": 4,
+        "description": "Cake"
+    },
+    {
+        "itemName": "Milk",
+        "quantity": 26,
+        "price": 5.30,
+        "description": "Milk"
+    },
+    {
+        "itemName": "Bread",
+        "quantity": 15,
+        "price": 3.99,
+        "description": "Bread"
+    }
+]

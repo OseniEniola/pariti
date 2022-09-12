@@ -1,0 +1,338 @@
+//*** recursion didn't make sense - refactor ***//
+
+function dispenseChange(change) {
+  // coins used and amnts
+  const coins = {
+    'quarter': 25,
+    'dime': 10,
+    'nickel': 5
+  };
+
+  // build object of coins to give as change
+  const changeToGive = {
+    'quarter': 0,
+    'dime': 0,
+    'nickel': 0,
+  };
+
+  const changeKeys = Object.keys(changeToGive);
+
+  // keep track of amnt being given
+  let amntToGive = 0;
+
+    // can't break out of forEach
+    // so to refactor can I use a for loop?
+
+    for (let i = 0; i < changeKeys.length; i++) {
+      const amntLeft = change - amntToGive;
+      const coin = changeKeys[i]
+
+      if (coins[coin] <= amntLeft) {
+
+          // is coin less than change left to give?
+          changeToGive[coin] += 1
+
+          // track amnt being given
+          amntToGive += coins[coin]
+
+        // don't need recursion, just reset the value of i
+        i--
+      } else if (amntToGive == change) {
+        break;
+      }
+    }
+
+    return changeToGive;
+}
+
+dispenseChange(80)
+
+
+
+
+
+// //*** refactor ***//
+
+// function dispenseChange(change) {
+//   // coins used and amnts
+//   const coins = {
+//     'quarter': 25,
+//     'dime': 10,
+//     'nickel': 5
+//   };
+
+//   // build object of coins to give as change
+//   const changeToGive = {
+//     'quarter': 0,
+//     'dime': 0,
+//     'nickel': 0,
+//   };
+
+//   const changeKeys = Object.keys(changeToGive);
+
+//   // keep track of amnt being given
+//   let amntToGive = 0;
+
+//   // recursive function to build out change object
+//   function buildChange() {
+
+//     // can't break out of forEach
+//     // so to refactor can I use a for loop?
+
+//     for (let i = 0; i < changeKeys.length; i++) {
+//       const amntLeft = change - amntToGive;
+//       const coin = changeKeys[i]
+
+//       // if we have change we need then break
+//       if (amntToGive == change) {
+//         break;
+//       }
+
+//       if (coins[coin] <= amntLeft) {
+
+//           // is coin less than change left to give?
+//           changeToGive[coin] += 1
+
+//           // track amnt being given
+//           amntToGive += coins[coin]
+
+//           buildChange()
+//       }
+//     }
+
+
+//     // loop over coins
+//     // Object.keys(coins).forEach( coin => {
+//     //   // track amnt left
+//     //   const amntLeft = change - amntToGive;
+
+//     //   // is coin less than change left to give?
+//     //   if (coins[coin] <= amntLeft) {
+//     //     // add 1 coin to the change object
+//     //     changeToGive[coin] += 1
+//     //     // track amnt being given
+//     //     amntToGive += coins[coin]
+
+//     //     // this solves the effeciency problem
+//     //     buildChange()
+//     //   }
+//     // })
+
+//   }
+
+//     buildChange()
+
+//     return changeToGive;
+// }
+
+// dispenseChange(55)
+
+
+
+//***********************************//
+//***********************************//
+//***********************************//
+//***********************************//
+//***********************************//
+//***********************************//
+//***********************************//
+//***********************************//
+//***********************************//
+
+
+
+
+//*** GETTING IT TO WORK ***//
+
+// AND spelled 'nickel' right this time 
+
+
+
+// function dispenseChange(change) {
+//   // change = 75
+//   // figure quarters, knickels dimes
+//   // object that holds q, k, d
+
+
+//   const coins = {
+//     'quarter': 25,
+//     'dime': 10,
+//     'nickel': 5
+//   };
+
+//   const changeNeeded = change;
+//   const changeToGive = {
+//     'quarter': 0,
+//     'nickel': 0,
+//     'dime': 0
+//   };
+//   let amntToGive = 0;
+
+//   // fnc build change(amnt)
+//   // run loop over coins
+//   // at end of loop, if change != changeToGive amnt
+//   // run buildChange(amnt) with remaining amount
+
+//   function buildChange(change) {
+
+//     //loop over coins
+//     //if my change is less than coin
+//     //add coin in change to give
+//     //calculate how much is left
+    
+//     //this wont be optimal, but will work
+//     //can refactor after get working to give smallest amount of coins
+
+
+//     Object.keys(coins).forEach( coin => {
+//       console.log('AMNT TO GIVE:: ', amntToGive)
+//       const track = changeNeeded - amntToGive;
+
+//       if (coins[coin] <= track) {
+//         changeToGive[coin] += 1
+//         amntToGive += coins[coin]
+//       }
+
+//       console.log('CHANGE TO GIVE:: ', changeToGive)
+//     })
+
+//     if (amntToGive < changeNeeded) {
+//       buildChange(changeNeeded - amntToGive)
+//     }
+
+// console.log('AMNT TO GIVE:: ', amntToGive)
+// console.log('CHANGE NEEDED:: ', changeNeeded)
+//     if (amntToGive === changeNeeded) {
+//       return
+//     }
+
+//   }
+
+//   buildChange(change)
+
+
+//   // return Object.keys(coins).reduce((acc, coin) => {
+//   //   // do comparison here for change
+//   // // keep track of diff of change needed
+
+//   //   let changeNeeded = change;
+
+//   //   if ( coins[coin] < changeNeeded ) {
+//   //     acc[coin] = 1
+//   //     changeNeeded = change - coins[coin];
+//   //   }
+
+//   //   return acc
+//   // }, {})
+
+// // will possibly need to run this loop again
+// // for example, what if I need 2 quarters?
+// // possible recursion here
+// // if using recursion, don't need reduce
+// // just run a loop
+
+
+// }
+
+// dispenseChange(75)
+
+
+
+
+//***********************************//
+//***********************************//
+//***********************************//
+//***********************************//
+//***********************************//
+//***********************************//
+//***********************************//
+//***********************************//
+//***********************************//
+
+
+
+
+
+//**** ON CALL PROGRESS ****/
+
+// // The vending machine has a predefined set of items that the user can 
+// // purchase using cash. The vending machine has the following actions:
+
+// // - User inserts cash <-
+// // - User selects item <-
+// // - Item dispensed if available
+// // - Change dispensed
+
+// // Your task is:
+
+// // Design the structure of the program that controls the vending machine
+// // Implement a method dispenseChange()
+
+
+// const vendingMachine = {
+//   'snickers': { price: 100, qnty: 4},
+//   'cheez-its': { price: 125, qnty: 2},
+//   'mango': { price: 300, qnty: 5}
+// }
+
+// let moneyReceived = 0;
+// // function that takes money
+// // for every time recieves money 
+// // hang on this amnt to make the check if enough
+
+// function getMoney(money) {
+//   moneyReceived += money;
+// };
+
+
+
+// // funciton when user clicks button to get item
+// // on that click, run check if enough money
+// // if there is dispense item, give change
+
+// function chooseItem(item) {
+//   // item: string
+//   // find item in VM
+//   // check price against moneyReceived
+//   // if enough (>) then dispense item
+//   // not enough then console.log(not enough money)
+//   // if too much money give change dispenseChange()
+//   // do math moneyReceived - price = change
+//   Object.keys()
+
+// }
+
+// function dispenseChange(change) {
+//   // change = 35
+//   // figure quarters, knickels dimes
+//   // object that holds q, k, d
+
+
+//   const coins = {
+//     'quarter': 25,
+//     'dime': 10,
+//     'knickle': 5
+//   };
+
+//   // when deciding what to give
+//   // choose the highest amnt first
+
+//   // with chnage i have, do a comparison with highest coin first
+//   // if that coin fits, then add to variable that holds chagne to give
+
+//   Object.keys(coins).reduce((acc, coin) => {
+//     // do comparison here for change
+//   // keep track of diff of change needed
+
+//     // const changeNeeded = 
+    
+//     if ( coins[coin] < change ) {
+//       acc[coin] = 1
+//     }
+
+//     return acc
+//   }, {})
+
+
+
+// }
